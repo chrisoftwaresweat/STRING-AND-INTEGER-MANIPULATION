@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IntegerManipulation integerManipulation = new IntegerManipulation();
-        StringManipulation stringManipulation = new StringManipulation();
+
+        IntegerManipulation integerManipulation = new IntegerManipulation(scanner);
+        StringManipulation stringManipulation = new StringManipulation(scanner);
 
         //main menu
         int userChoice;
@@ -19,10 +20,10 @@ public class Main {
 
             switch (userChoice){
                 case 1:
-                    StringManipulation.stringManipulation(scanner);
+                    stringManipulation.stringManipulation();
                     break;
                 case 2:
-                    IntegerManipulation.integerManipulation(scanner);
+                    integerManipulation.integerManipulation();
                     break;
                 case 3:
                     System.out.println("HOPE YOU LEARNED SOMETHING!");
