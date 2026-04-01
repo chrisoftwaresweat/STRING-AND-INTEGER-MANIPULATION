@@ -3,38 +3,39 @@ import java.util.Scanner;
 
 public class IntegerManipulation {
 
-    public static void sizeableBubbleSorting(Scanner scanner) {
+    private Scanner scanner;
+
+    public IntegerManipulation(Scanner scanner){
+        this.scanner = scanner;
+    }
+
+    public void sizeableBubbleSorting() {
         int[] a = new int[100];
 
-        // user input
         System.out.print("Enter the size of your array: ");
         int length = scanner.nextInt();
         System.out.printf("Enter %d number/s:\n", length);
 
-        // sizing the array
         for (int i = 0; i < length; i++) a[i] = scanner.nextInt();
 
-        // index and comparison
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length - 1; j++) {
                 if (a[j] > a[j + 1]) {
                     int temp = a[j];
                     a[j] = a[j + 1];
                     a[j + 1] = temp;
-                } // to reverse sort, do a[j] < a[j + 1]
+                }
             }
         }
 
-        // result
         System.out.print("\nSorted successfully: ");
         for (int i = 0; i < length; i++) System.out.printf("%d ", a[i]);
         System.out.println("\n");
     }
 
-    public static void primitiveBubbleSorting(Scanner scanner) {
+    public void primitiveBubbleSorting() {
         int temp;
 
-        // user input
         System.out.println("Sorting the 3 integers you'll give");
         System.out.print("Enter the first integer: ");
         int firstInt = scanner.nextInt();
@@ -43,7 +44,6 @@ public class IntegerManipulation {
         System.out.print("Enter the final integer: ");
         int thirdInt = scanner.nextInt();
 
-        // sorting
         if (firstInt > secondInt) {
             temp = firstInt;
             firstInt = secondInt;
@@ -60,42 +60,34 @@ public class IntegerManipulation {
             thirdInt = temp;
         }
 
-        // result
         System.out.printf("\nSorted successfully: %d %d %d\n\n", firstInt, secondInt, thirdInt);
     }
 
-    public static void arraySorting(Scanner scanner) {
+    public void arraySorting() {
         int[] unsorted = new int[100];
 
-        // user input
         System.out.print("Enter the size of your array: ");
         int length = scanner.nextInt();
         System.out.printf("Enter %d number/s:\n", length);
 
-        // sizing the array
         for (int i = 0; i < length; i++) unsorted[i] = scanner.nextInt();
 
-        // sorting (arr, start, end) index starts at 0
         Arrays.sort(unsorted, 0, length);
 
-        // result
         System.out.print("\nSorted successfully: ");
         for (int i = 0; i < length; i++) System.out.printf("%d ", unsorted[i]);
         System.out.println("\n");
     }
 
-    public static void reversedInt(Scanner scanner){
+    public void reversedInt(){
         int reversedNumber=0;
 
-        //user input
         System.out.print("Enter some numbers: ");
         int numbers = scanner.nextInt();
 
-        //reversing
         while(numbers != 0){
             int lastDigit = numbers % 10;
 
-            //check if overflow
             if((reversedNumber > Integer.MAX_VALUE / 10 || reversedNumber < Integer.MIN_VALUE / 10)){
                 System.out.println("Overflow occurred!");
                 return;
@@ -105,23 +97,19 @@ public class IntegerManipulation {
             numbers = numbers /  10;
         }
 
-        //result
         System.out.printf("\nReversed Successfully: %d\n\n", reversedNumber);
     }
 
-    public static void palindromeInt(Scanner scanner){
+    public void palindromeInt(){
         int reversedNumber = 0;
 
-        //user input
         System.out.print("Enter some numbers: ");
         int numbers = scanner.nextInt();
-        int ogNum = numbers; //preserved the original number for later comparison
+        int ogNum = numbers;
 
-        //reversing
         while(numbers != 0){
             int lastDigit = numbers % 10;
 
-            //check if overflow
             if((reversedNumber > Integer.MAX_VALUE / 10 || reversedNumber < Integer.MIN_VALUE / 10)){
                 System.out.println("Overflow occurred!");
                 return;
@@ -131,16 +119,13 @@ public class IntegerManipulation {
             numbers = numbers /  10;
         }
 
-        //output
-        System.out.printf("\nOutput: %s\n", reversedNumber);
+        System.out.printf("\nOutput: %d\n", reversedNumber);
 
-        //check if palindrome or not
         if(reversedNumber == ogNum) System.out.println("Palindrome!");
         else System.out.println("NOT Palindrome!");
     }
 
-    public static void integerManipulation(Scanner scanner){
-        //menu
+    public void integerManipulation(){
         int choice;
 
         do{
@@ -157,19 +142,19 @@ public class IntegerManipulation {
 
             switch(choice){
                 case 1:
-                    sizeableBubbleSorting(scanner);
+                    sizeableBubbleSorting();
                     break;
                 case 2:
-                    primitiveBubbleSorting(scanner);
+                    primitiveBubbleSorting();
                     break;
                 case 3:
-                    arraySorting(scanner);
+                    arraySorting();
                     break;
                 case 4:
-                    reversedInt(scanner);
+                    reversedInt();
                     break;
                 case 5:
-                    palindromeInt(scanner);
+                    palindromeInt();
                     break;
                 case 6:
                     System.out.println("Returning to main menu...");
